@@ -1,0 +1,26 @@
+logo_dragao.png	Logo do cabeçalho	500 x 500 (fundo transparente)
+aviso1.png	Destaque Principal (Grande)	1200 x 840
+cardapio.png	Coluna Lateral (Vertical)	580 x 840
+aviso3.png	Banner Horizontal (Largo)	1200 x 400
+aviso4.png	Bloco Menor (Quadrado)	580 x 400
+aviso5.png	Bloco Menor (Quadrado)	580 x 400
+
+
+
+
+Por que fazer assim?
+No código da página de biblioteca que criamos, quando o aluno seleciona "1º Ano Médio" e "Matemática", o site faz o seguinte caminho: docs/ + 1ano/ + matematica.pdf
+
+Resultado final: docs/1ano/matematica.pdf
+
+Resumo do que colocar dentro de cada subpasta:
+Na pasta 1ano: salve os arquivos portugues.pdf, matematica.pdf, etc., referentes ao primeiro ano.
+
+Na pasta 2ano: faça o mesmo com os livros do segundo.
+
+E assim por diante.
+
+Dica importante: Se você mudar o nome de uma pasta (ex: de 1ano para primeiro_ano), precisará mudar o "value" correspondente lá no código HTML da biblioteca.html. Por isso, recomendo manter esses nomes simples que sugeri.
+
+
+
