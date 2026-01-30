@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Biblioteca Digital | Dragão do Mar</title>
 
-  <!-- Fonts & Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
@@ -32,7 +31,6 @@
       justify-content: center;
     }
 
-    /* Botão voltar */
     .btn-voltar {
       position: fixed;
       top: 20px;
@@ -55,7 +53,6 @@
       color: #000;
     }
 
-    /* Card principal */
     .card {
       width: 92%;
       max-width: 460px;
@@ -141,7 +138,6 @@
       color: var(--text-muted);
     }
     .footer span { color: var(--primary); font-weight: 700; }
-
   </style>
 </head>
 <body>
@@ -153,20 +149,20 @@
 
     <label>Disciplina</label>
     <select id="disciplina">
-     <option value="portugues">Português</option>
-      <option value="redacao">Redação</option>
-      <option value="matematica">Matemática</option>
-      <option value="artes">Artes</option>
-      <option value="ed_fisica">Educação Física</option>
-      <option value="fisica">Física</option>
-      <option value="biologia">Biologia</option>
-      <option value="quimica">Química</option>
-      <option value="historia">História</option>
-      <option value="geografia">Geografia</option>
-      <option value="filosofia">Filosofia</option>
-      <option value="sociologia">Sociologia</option>
-      <option value="ingles">Inglês</option>
-      <option value="espanhol">Espanhol</option>
+      <option value="Português">Português</option>
+      <option value="Redação">Redação</option>
+      <option value="Matemática">Matemática</option>
+      <option value="Artes">Artes</option>
+      <option value="Educação Física">Educação Física</option>
+      <option value="Física">Física</option>
+      <option value="Biologia">Biologia</option>
+      <option value="Química">Química</option>
+      <option value="História">História</option>
+      <option value="Geografia">Geografia</option>
+      <option value="Filosofia">Filosofia</option>
+      <option value="Sociologia">Sociologia</option>
+      <option value="Inglês">Inglês</option>
+      <option value="Espanhol">Espanhol</option>
     </select>
 
     <label>Série / Nível</label>
@@ -177,7 +173,7 @@
       <option value="3ano">3º Ano Médio</option>
     </select>
 
-    <button onclick="acessarPDF()">BAIXAR LIVRO PDF</button>
+    <button onclick="acessarPDF()">VER MATERIAIS</button>
 
     <div class="footer">EEMTI Dragão do Mar 2026 · <span>powered by LEI</span></div>
   </div>
@@ -186,10 +182,9 @@
     function acessarPDF() {
       const d = document.getElementById('disciplina').value;
       const s = document.getElementById('serie').value;
-      window.open(`docs/${s}/${d}.pdf`, '_blank');
+      // Navega para a lista enviando os dados via URL
+      window.location.href = `lista.html?serie=${s}&disciplina=${d}`;
     }
   </script>
-
 </body>
 </html>
-
