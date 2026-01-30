@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EEMTI Dragão do Mar | 2026</title>
 
-  <!-- Fonts & Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
@@ -126,6 +125,46 @@
       object-fit: cover;
     }
 
+    /* ESTILO DO CARDÁPIO HTML OTOMIZADO */
+    .card-cardapio {
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cardapio-title {
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border-soft);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .menu-item {
+      margin-bottom: 5px;
+    }
+
+    .dia {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.7rem;
+      display: block;
+      margin-bottom: 1px;
+    }
+
+    .prato {
+      font-size: 0.8rem;
+      color: #e2e8f0;
+      line-height: 1.3;
+      display: block;
+    }
+
     .grande { grid-column: span 2; grid-row: span 2; }
     .alto   { grid-row: span 2; }
     .largo  { grid-column: span 2; }
@@ -142,14 +181,14 @@
 
     @media (max-width: 768px) {
       .grande, .largo { grid-column: span 1; }
+      .alto { grid-row: span 2; height: auto; min-height: 400px; }
     }
-
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="brand">DRAGÃO DO MAR</div>
+    <div class="brand">Governo do Estado do Ceará</div>
     <a href="biblioteca.html" class="btn-nav">BIBLIOTECA DIGITAL</a>
   </nav>
 
@@ -160,8 +199,43 @@
   </header>
 
   <main class="grid">
-    <div class="card grande"><img src="img/aviso1.png"></div>
-    <div class="card alto"><img src="img/cardapio.png"></div>
+    <div class="card grande">
+      <img src="img/imagem1.png" alt="Aviso Início das Aulas">
+    </div>
+
+    <div class="card alto">
+      <div class="card-cardapio">
+        <div class="cardapio-title">
+          <i class="fas fa-utensils" style="margin-right: 8px;"></i>Cardápio
+        </div>
+        
+        <div class="menu-item">
+          <span class="dia">SEGUNDA-FEIRA</span>
+          <span class="prato">Arroz, Feijão, Frango Grelhado e Salada Mista.</span>
+        </div>
+
+        <div class="menu-item">
+          <span class="dia">TERÇA-FEIRA</span>
+          <span class="prato">Macarronada à Bolonhesa e Salada de Folhas.</span>
+        </div>
+
+        <div class="menu-item">
+          <span class="dia">QUARTA-FEIRA</span>
+          <span class="prato">Cuscuz com Ovos, Leite e Frutas da Estação.</span>
+        </div>
+
+        <div class="menu-item">
+          <span class="dia">QUINTA-FEIRA</span>
+          <span class="prato">Arroz, Feijão Tropeiro e Carne de Panela.</span>
+        </div>
+
+        <div class="menu-item">
+          <span class="dia">SEXTA-FEIRA</span>
+          <span class="prato">Peixe Empanado, Arroz e Salada de Legumes.</span>
+        </div>
+      </div>
+    </div>
+
     <div class="card largo"><img src="img/aviso3.png"></div>
     <div class="card"><img src="img/aviso4.png"></div>
     <div class="card"><img src="img/aviso5.png"></div>
