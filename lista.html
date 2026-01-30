@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materiais | Dragão do Mar</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #050505;
+      --bg-card: #0f0f14;
+      --border-soft: #1f1f2a;
+      --primary: #00d4ff;
+      --accent: #ffcc00;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #0b1220, #050505 60%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-buttons {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-nav {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 999px; font-size: 0.8rem;
+      text-decoration: none; color: #fff; background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px); border: 1px solid var(--border-soft); transition: 0.3s;
+    }
+    .btn-nav:hover { background: var(--primary); color: #000; }
+
+    .card {
+      width: 92%; max-width: 500px;
+      background: linear-gradient(180deg, #12121a, #0b0b10);
+      border: 1px solid var(--border-soft); border-radius: 22px;
+      padding: 40px 35px; box-shadow: 0 30px 80px rgba(0,0,0,.6);
+      animation: rise .8s ease;
+    }
+
+    @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    h1 { margin: 0; font-size: 1.6rem; font-weight: 900; color: var(--primary); }
+    .subtitle { color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 30px; display: block; }
+
+    .lista-arquivos { display: flex; flex-direction: column; gap: 12px; }
+    
+    .item-pdf {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px; background: #0b0b14; border: 1px solid var(--border-soft);
+      border-radius: 12px; text-decoration: none; color: #fff; transition: 0.3s;
+    }
+    .item-pdf:hover { border-color: var(--primary); transform: translateX(5px); background: rgba(0,212,255,0.05); }
+    .item-pdf i.fa-file-pdf { color: #ff4d4d; font-size: 1.2rem; }
+    .item-pdf span { flex: 1; margin-left: 15px; font-size: 0.95rem; }
+
+    .empty-msg { color: var(--text-muted); text-align: center; padding: 20px; font-size: 0.9rem; }
+    .footer { margin-top: 25px; text-align: center; font-size: 0.75rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <div class="nav-buttons">
+    <a href="index.html" class="btn-nav"><i class="fas fa-home"></i> Início</a>
+    <a href="biblioteca.html" class="btn-nav"><i class="fas fa-book"></i> Biblioteca</a>
+  </div>
+
+  <div class="card">
+    <h1 id="txt-disciplina">Arquivos</h1>
+    <span class="subtitle" id="txt-serie">Selecionando...</span>
+
+    <div class="lista-arquivos" id="container-lista">
+      </div>
+
+    <div class="footer">EEMTI Dragão do Mar 2026</div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const serie = urlParams.get('serie');
+    const disciplina = urlParams.get('disciplina');
+
+    document.getElementById('txt-disciplina').innerText = disciplina;
+    document.getElementById('txt-serie').innerText = serie.replace('ano', 'º Ano Médio').replace('fundamental', 'Ensino Fundamental');
+
+    // BANCO DE DADOS MANUAL
+    // Para adicionar arquivos, basta preencher conforme o exemplo abaixo:
+    const baseArquivos = {
+      "1ano": {
+        "Matemática": [
+          { nome: "Livro de Matemática - Vol 1", path: "docs/1ano/matematica_vol1.pdf" },
+          { nome: "Caderno de Atividades", path: "docs/1ano/atividades_mat.pdf" }
+        ],
+        "Português": [
+          { nome: "Gramática Aplicada", path: "docs/1ano/gramatica.pdf" }
+        ]
+      },
+      "2ano": {
+        "Física": [
+          { nome: "Física Térmica", path: "docs/2ano/fisica_termica.pdf" }
+        ]
+      },
+      "3ano": {
+        "Redação": [
+          { nome: "Manual da Redação ENEM", path: "docs/3ano/redacao_enem.pdf" }
+        ]
+      },
+      "fundamental": {
+         "Artes": [
+           { nome: "Apostila de Artes", path: "docs/fundamental/artes.pdf" }
+         ]
+      }
+    };
+
+    const container = document.getElementById('container-lista');
+    const arquivosEncontrados = baseArquivos[serie] && baseArquivos[serie][disciplina];
+
+    if (arquivosEncontrados && arquivosEncontrados.length > 0) {
+      arquivosEncontrados.forEach(file => {
+        container.innerHTML += `
+          <a href="${file.path}" class="item-pdf" target="_blank">
+            <i class="fas fa-file-pdf"></i>
+            <span>${file.nome}</span>
+            <i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--text-muted);"></i>
+          </a>
+        `;
+      });
+    } else {
+      container.innerHTML = '<div class="empty-msg">Ainda não há materiais cadastrados para esta disciplina.</div>';
+    }
+  </script>
+</body>
+</html>
