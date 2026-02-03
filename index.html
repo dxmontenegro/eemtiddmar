@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Configuração básica do documento -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Título exibido na aba do navegador -->
   <title>EEMTI Dragão do Mar | 2026</title>
 
+  <!-- Ícones Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Fonte Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
   <style>
+    /* =========================
+       VARIÁVEIS DE CORES (TEMA)
+       ========================= */
     :root {
       --bg-main: #050505;
       --bg-card: #0f0f14;
@@ -18,8 +27,12 @@
       --text-muted: #94a3b8;
     }
 
+    /* Reset básico */
     * { box-sizing: border-box; }
 
+    /* =========================
+       ESTILO GERAL DA PÁGINA
+       ========================= */
     body {
       margin: 0;
       min-height: 100vh;
@@ -28,7 +41,9 @@
       color: #fff;
     }
 
-    /* NAVBAR */
+    /* =========================
+       NAVBAR (TOPO FIXO)
+       ========================= */
     nav {
       position: sticky;
       top: 0;
@@ -42,6 +57,7 @@
       border-bottom: 1px solid var(--border-soft);
     }
 
+    /* Texto do governo */
     .brand {
       font-weight: 900;
       letter-spacing: .15em;
@@ -49,34 +65,39 @@
       color: var(--accent);
     }
 
+    /* Botão da biblioteca digital */
     .btn-nav {
       padding: 10px 18px;
-      border-radius: 0; 
       background: linear-gradient(135deg, var(--accent), #ffe066);
       color: #000;
-      text-decoration: none;  
+      text-decoration: none;
       font-size: .75rem;
       font-weight: 800;
       letter-spacing: .1em;
       transition: transform .3s ease, box-shadow .3s ease;
     }
+
     .btn-nav:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 30px rgba(255,204,0,.35);
     }
 
-    /* HEADER */
+    /* =========================
+       CABEÇALHO PRINCIPAL
+       ========================= */
     header {
       padding: 60px 20px 40px;
       text-align: center;
     }
 
+    /* Logo da escola */
     .logo {
       width: 220px;
       margin-bottom: 18px;
       filter: drop-shadow(0 0 20px rgba(0,212,255,.45));
     }
 
+    /* Nome da escola */
     h1 {
       margin: 0;
       font-size: 2.4rem;
@@ -87,6 +108,7 @@
       -webkit-text-fill-color: transparent;
     }
 
+    /* Subtítulo */
     .subtitle {
       margin-top: 10px;
       font-size: .9rem;
@@ -94,7 +116,9 @@
       letter-spacing: .15em;
     }
 
-    /* GRID DE AVISOS */
+    /* =========================
+       GRID PRINCIPAL DE CARDS
+       ========================= */
     .grid {
       max-width: 1200px;
       margin: 30px auto 50px;
@@ -105,27 +129,31 @@
       gap: 18px;
     }
 
+    /* Card padrão */
     .card {
       background: linear-gradient(180deg, #12121a, #0b0b10);
       border: 1px solid var(--border-soft);
-      border-radius: 0; 
       overflow: hidden;
       box-shadow: 0 20px 50px rgba(0,0,0,.5);
       transition: transform .35s ease, box-shadow .35s ease;
     }
 
+    /* Animação ao passar o mouse */
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 30px 70px rgba(0,0,0,.75);
     }
 
+    /* Imagens dos avisos */
     .card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    /* ESTILO DO CONTEÚDO DE TEXTO */
+    /* =========================
+       CARDS COM TEXTO (CARDÁPIO / FREQUÊNCIA)
+       ========================= */
     .card-cardapio {
       padding: 20px;
       height: 100%;
@@ -134,6 +162,7 @@
       justify-content: space-between;
     }
 
+    /* Título do card */
     .cardapio-title {
       color: var(--primary);
       font-size: 1.1rem;
@@ -146,106 +175,120 @@
       letter-spacing: 1px;
     }
 
+    /* Item individual */
     .menu-item {
       margin-bottom: 5px;
     }
 
+    /* Dia ou série */
     .dia {
       color: var(--accent);
       font-weight: 800;
       font-size: 0.7rem;
       display: block;
-      margin-bottom: 1px;
     }
 
+    /* Descrição */
     .prato {
       font-size: 0.8rem;
       color: #e2e8f0;
       line-height: 1.3;
-      display: block;
     }
 
+    /* =========================
+       TAMANHOS ESPECIAIS DE CARD
+       ========================= */
     .grande { grid-column: span 2; grid-row: span 2; }
     .alto   { grid-row: span 2; }
     .largo  { grid-column: span 2; }
 
-    /* FOOTER */
+    /* =========================
+       RODAPÉ
+       ========================= */
     footer {
       text-align: center;
       padding: 35px 20px;
       border-top: 1px solid var(--border-soft);
       font-size: .75rem;
       color: var(--text-muted);
-      margin-top: 20px;
     }
-    footer span { color: var(--primary); font-weight: 700; }
 
+    footer span {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* =========================
+       RESPONSIVIDADE (CELULAR)
+       ========================= */
     @media (max-width: 768px) {
       .grande, .largo { grid-column: span 1; }
-      .alto { grid-row: span 2; height: auto; min-height: 400px; }
+      .alto { grid-row: span 2; min-height: 400px; }
     }
   </style>
 </head>
+
 <body>
 
+  <!-- NAVBAR -->
   <nav>
     <div class="brand">Governo do Estado do Ceará</div>
     <a href="biblioteca.html" class="btn-nav">BIBLIOTECA DIGITAL</a>
   </nav>
 
+  <!-- CABEÇALHO -->
   <header>
     <img src="img/logo_dragao.png" alt="Logo Dragão do Mar" class="logo">
     <h1>EEMTI DRAGÃO DO MAR</h1>
     <div class="subtitle">PORTAL ESCOLAR · 2026</div>
   </header>
 
+  <!-- GRID PRINCIPAL -->
   <main class="grid">
+
+    <!-- Aviso principal -->
     <div class="card grande">
       <img src="img/imagem1.png" alt="Aviso Início das Aulas">
     </div>
 
+    <!-- Cardápio -->
     <div class="card alto">
       <div class="card-cardapio">
         <div class="cardapio-title">
-          <i class="fas fa-utensils" style="margin-right: 8px;"></i>Cardápio
+          <i class="fas fa-utensils"></i> Cardápio
         </div>
-        <div class="menu-item"><span class="dia">SEGUNDA-FEIRA</span><span class="prato">Arroz, Feijão, Frango Grelhado e Salada Mista.</span></div>
-        <div class="menu-item"><span class="dia">TERÇA-FEIRA</span><span class="prato">Macarronada à Bolonhesa e Salada de Folhas.</span></div>
-        <div class="menu-item"><span class="dia">QUARTA-FEIRA</span><span class="prato">Cuscuz com Ovos, Leite e Frutas da Estação.</span></div>
-        <div class="menu-item"><span class="dia">QUINTA-FEIRA</span><span class="prato">Arroz, Feijão Tropeiro e Carne de Panela.</span></div>
-        <div class="menu-item"><span class="dia">SEXTA-FEIRA</span><span class="prato">Peixe Empanado, Arroz e Salada de Legumes.</span></div>
+
+        <!-- Dias da semana -->
+        <div class="menu-item"><span class="dia">SEGUNDA</span><span class="prato">Arroz, Feijão, Frango Grelhado e Salada.</span></div>
+        <div class="menu-item"><span class="dia">TERÇA</span><span class="prato">Macarronada à Bolonhesa.</span></div>
+        <div class="menu-item"><span class="dia">QUARTA</span><span class="prato">Cuscuz com Ovos e Frutas.</span></div>
+        <div class="menu-item"><span class="dia">QUINTA</span><span class="prato">Arroz, Feijão Tropeiro e Carne.</span></div>
+        <div class="menu-item"><span class="dia">SEXTA</span><span class="prato">Peixe Empanado e Salada.</span></div>
       </div>
     </div>
 
+    <!-- Outros avisos -->
     <div class="card largo"><img src="img/aviso3.png" alt="Aviso"></div>
 
+    <!-- Frequência -->
     <div class="card">
       <div class="card-cardapio">
         <div class="cardapio-title">
-          <i class="fas fa-chart-bar" style="margin-right: 8px;"></i>Frequência
+          <i class="fas fa-chart-bar"></i> Frequência
         </div>
-        <div class="menu-item">
-          <span class="dia">1º ANO</span>
-          <span class="prato">1A: 95% | 1B: 88% | 1C: 91%</span>
-        </div>
-        <div class="menu-item">
-          <span class="dia">2º ANO</span>
-          <span class="prato">2A: 84% | 2B: 89% | 2C: 82%</span>
-        </div>
-        <div class="menu-item">
-          <span class="dia" style="color: var(--primary);">3º ANO</span>
-          <span class="prato" style="font-weight: 800;">3A: 98% | 3B: 96%</span>
-        </div>
+        <div class="menu-item"><span class="dia">1º ANO</span><span class="prato">1A 95% | 1B 88%</span></div>
+        <div class="menu-item"><span class="dia">2º ANO</span><span class="prato">2A 84% | 2B 89%</span></div>
+        <div class="menu-item"><span class="dia" style="color: var(--primary);">3º ANO</span><span class="prato"><strong>98%</strong></span></div>
       </div>
     </div>
 
     <div class="card"><img src="img/aviso5.png" alt="Aviso"></div>
   </main>
 
+  <!-- RODAPÉ -->
   <footer>
     EEMTI Dragão do Mar 2026 · <span>powered by LEI</span>
   </footer>
 
 </body>
 </html>
-
