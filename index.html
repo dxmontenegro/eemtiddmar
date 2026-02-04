@@ -2,36 +2,45 @@
 <html lang="pt-BR">
 <head>
   <!-- =========================
-       CONFIGURAÇÕES BÁSICAS
-       ========================= -->
+       CONFIGURAÇÕES BÁSICAS (HEAD)
+       ========================= 
+       - Aqui ficam meta tags, título, fontes e ícones.
+       - Para alterar: mude o <title>, adicione mais meta tags SEO ou troque fontes CDN.
+  -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EEMTI Dragão do Mar | 2026</title>
 
-  <!-- Ícones Font Awesome -->
+  <!-- Ícones Font Awesome - CDN para ícones como Instagram e utensils -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Fonte Google -->
+  <!-- Fonte Google Inter - pesos para diferentes hierarquias de texto -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
   <style>
     /* =========================
-       VARIÁVEIS DE TEMA
-       ========================= */
+       VARIÁVEIS CSS (ROOT) - TEMAS GLOBAIS
+       ========================= 
+       - Altere cores aqui para mudar todo o site de uma vez.
+       - Ex: --primary para azul principal, --accent para amarelo.
+    */
     :root {
-      --bg-main: #050505;
-      --bg-card: #0f0f14;
-      --border-soft: #1f1f2a;
-      --primary: #00d4ff;
-      --accent: #ffe066;
-      --text-muted: #94a3b8;
+      --bg-main: #050505;      /* Fundo principal escuro */
+      --bg-card: #0f0f14;     /* Fundo dos cards */
+      --border-soft: #1f1f2a;  /* Bordas suaves */
+      --primary: #00d4ff;      /* Cor principal (azul ciano) */
+      --accent: #ffe066;       /* Cor de destaque (amarelo) */
+      --text-muted: #94a3b8;   /* Texto secundário cinza */
     }
 
+    /* Reset básico - box-sizing para todos elementos */
     * { box-sizing: border-box; }
 
     /* =========================
-       ESTILO GLOBAL
-       ========================= */
+       ESTILO GLOBAL (BODY)
+       ========================= 
+       - Fundo gradiente radial. Altere para imagem de fundo se quiser.
+    */
     body {
       margin: 0;
       min-height: 100vh;
@@ -41,8 +50,12 @@
     }
 
     /* =========================
-       NAVBAR (CABEÇALHO SUPERIOR)
-       ========================= */
+       NAVBAR (CABEÇALHO FIXO SUPERIOR)
+       ========================= 
+       - Sticky top: fica fixo ao scroll.
+       - Backdrop blur para efeito vidro fosco.
+       - Edite .brand para texto do governo, .nav-right para links.
+    */
     nav {
       position: sticky;
       top: 0;
@@ -56,7 +69,7 @@
       border-bottom: 1px solid var(--border-soft);
     }
 
-    /* Texto Governo */
+    /* Logo/Texto do Governo na esquerda */
     .brand {
       font-weight: 900;
       letter-spacing: .15em;
@@ -64,14 +77,14 @@
       color: var(--accent);
     }
 
-    /* Área direita da navbar (Instagram + Botão) */
+    /* Container direito: Instagram + Botão */
     .nav-right {
       display: flex;
       align-items: center;
       gap: 18px;
     }
 
-    /* Ícone do Instagram */
+    /* Ícone Instagram com hover animado */
     .instagram-icon {
       font-size: 1.2rem;
       color: var(--accent);
@@ -83,7 +96,7 @@
       color: var(--primary);
     }
 
-    /* Botão Biblioteca */
+    /* Botão da Biblioteca - gradiente e sombra no hover */
     .btn-nav {
       padding: 10px 18px;
       background: linear-gradient(135deg, var(--accent), #ffe066);
@@ -101,15 +114,17 @@
     }
 
     /* =========================
-       CABEÇALHO PRINCIPAL
-       ========================= */
+       HEADER (CABEÇALHO PRINCIPAL)
+       ========================= 
+       - Centralizado com logo, título e subtítulo.
+    */
     header {
       padding: 60px 20px 40px;
       text-align: center;
     }
 
     .logo {
-      width: 220px;
+      width: 220px;  /* Largura fixa da logo - ajuste aqui */
       margin-bottom: 18px;
       filter: drop-shadow(0 0 20px rgba(0,212,255,.45));
     }
@@ -132,18 +147,23 @@
     }
 
     /* =========================
-       GRID DE CARDS
-       ========================= */
+       GRID PRINCIPAL (.grid) - CONTEÚDO CARDS
+       ========================= 
+       - Responsive: auto-fit columns, min 260px cada.
+       - Gap 18px entre cards.
+       - Adicione mais cards aqui no HTML <main>.
+    */
     .grid {
       max-width: 1200px;
       margin: 30px auto 50px;
       padding: 0 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      grid-auto-rows: 200px;
+      grid-auto-rows: 200px;  /* Altura padrão de cada card */
       gap: 18px;
     }
 
+    /* Estilo base dos cards - hover com elevação */
     .card {
       background: linear-gradient(180deg, #12121a, #0b0b10);
       border: 1px solid var(--border-soft);
@@ -157,15 +177,18 @@
       box-shadow: 0 30px 70px rgba(0,0,0,.75);
     }
 
+    /* Imagens dentro de cards - preenchem 100% com cover */
     .card img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover;  /* Mantém proporção, corta excesso */
     }
 
     /* =========================
-       CARDS DE TEXTO
-       ========================= */
+       CARDS DE TEXTO (ex: Cardápio, Frequência)
+       ========================= 
+       - Flex para distribuir conteúdo.
+    */
     .card-cardapio {
       padding: 20px;
       height: 100%;
@@ -201,14 +224,22 @@
       line-height: 1.3;
     }
 
-    /* Tamanhos especiais */
-    .grande { grid-column: span 2; grid-row: span 2; }
-    .alto   { grid-row: span 2; }
-    .largo  { grid-column: span 2; }
+    /* =========================
+       CLASSES ESPECIAIS PARA TAMANHOS DE CARDS
+       ========================= 
+       - .grande: 2x2 grid (desktop)
+       - .alto: 1x2 vertical
+       - .largo: 2x1 horizontal (usado no aviso3.png)
+    */
+    .grande { grid-column: span 2; grid-row: span 2; }  /* Card grande: imagem1.png */
+    .alto   { grid-row: span 2; }                      /* Card alto: cardápio */
+    .largo  { grid-column: span 2; }                   /* Card largo: aviso3.png - ~520x200px desktop */
 
     /* =========================
-       RODAPÉ
-       ========================= */
+       FOOTER (RODAPÉ)
+       ========================= 
+       - Simples, centralizado.
+    */
     footer {
       text-align: center;
       padding: 35px 20px;
@@ -223,23 +254,28 @@
     }
 
     /* =========================
-       RESPONSIVIDADE
-       ========================= */
+       RESPONSIVIDADE (MEDIA QUERY)
+       ========================= 
+       - Mobile first: abaixo 768px, cards grandes/largos viram 1 coluna.
+       - Ajuste breakpoints ou heights aqui.
+    */
     @media (max-width: 768px) {
-      .grande, .largo { grid-column: span 1; }
-      .alto { grid-row: span 2; min-height: 400px; }
+      .grande, .largo { grid-column: span 1; }  /* Em mobile: largura normal */
+      .alto { grid-row: span 2; min-height: 400px; }  /* Altos ficam mais altos */
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- =========================
+       NAVBAR - LINKS SUPERIORES
+       ========================= -->
   <nav>
-    <div class="brand">Governo do Estado do Ceará</div>
+    <div class="brand">Governo do Estado do Ceará</div>  <!-- ALTERE AQUI O TEXTO DO GOVERNO -->
 
     <div class="nav-right">
-      <!-- Instagram da escola -->
+      <!-- Instagram - troque o href para novo link -->
       <a href="https://www.instagram.com/eemtidragaodomar?igsh=MTB3amhsZXVlNG1rag=="
          target="_blank"
          class="instagram-icon"
@@ -247,31 +283,43 @@
         <i class="fab fa-instagram"></i>
       </a>
 
-      <!-- Biblioteca Digital -->
+      <!-- Botão Biblioteca - aponte para arquivo local -->
       <a href="biblioteca.html" class="btn-nav">BIBLIOTECA DIGITAL</a>
     </div>
   </nav>
 
-  <!-- CABEÇALHO -->
+  <!-- =========================
+       HEADER PRINCIPAL
+       ========================= 
+       - Logo: img/logo_dragao.png (220px width)
+  -->
   <header>
     <img src="img/logo_dragao.png" alt="Logo Dragão do Mar" class="logo">
-    <h1>EEMTI DRAGÃO DO MAR</h1>
+    <h1>EEMTI DRAGÃO DO MAR</h1>  <!-- TÍTULO PRINCIPAL - fácil de alterar -->
     <div class="subtitle">PORTAL ESCOLAR · 2026</div>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- =========================
+       MAIN - GRID DE CARDS (CONTEÚDO PRINCIPAL)
+       ========================= 
+       - Adicione mais <div class="card"> aqui para novos itens.
+       - Classes: grande (imagem1), alto (cardápio), largo (aviso3), normal (outros).
+  -->
   <main class="grid">
 
+    <!-- Card GRANDE (2x2): imagem1.png - ideal 520x400px+ -->
     <div class="card grande">
       <img src="img/imagem1.png" alt="Aviso Início das Aulas">
     </div>
 
+    <!-- Card ALTO (1x2): Cardápio texto -->
     <div class="card alto">
       <div class="card-cardapio">
         <div class="cardapio-title">
-          <i class="fas fa-utensils"></i> Cardápio
+          <i class="fas fa-utensils"></i> Cardápio  <!-- ÍCONE + TÍTULO -->
         </div>
 
+        <!-- ITENS DO CARDÁPIO - adicione/edit mais linhas aqui -->
         <div class="menu-item"><span class="dia">SEGUNDA</span><span class="prato">Arroz, Feijão, Frango e Salada.</span></div>
         <div class="menu-item"><span class="dia">TERÇA</span><span class="prato">Macarronada à Bolonhesa.</span></div>
         <div class="menu-item"><span class="dia">QUARTA</span><span class="prato">Cuscuz com Ovos e Frutas.</span></div>
@@ -280,12 +328,14 @@
       </div>
     </div>
 
+    <!-- Card LARGO (2x1): aviso3.png - dimensões: ~520x200px desktop, 260x200px mobile -->
     <div class="card largo"><img src="img/aviso3.png" alt="Aviso"></div>
 
+    <!-- Card NORMAL (1x1): Frequência texto -->
     <div class="card">
       <div class="card-cardapio">
         <div class="cardapio-title">
-          <i class="fas fa-chart-bar"></i> Frequência
+          <i class="fas fa-chart-bar"></i> Frequência  <!-- ALTERE DADOS AQUI -->
         </div>
         <div class="menu-item"><span class="dia">1º ANO</span><span class="prato">95% | 88%</span></div>
         <div class="menu-item"><span class="dia">2º ANO</span><span class="prato">84% | 89%</span></div>
@@ -293,12 +343,16 @@
       </div>
     </div>
 
+    <!-- Card NORMAL: aviso5.png -->
     <div class="card"><img src="img/aviso5.png" alt="Aviso"></div>
+
   </main>
 
-  <!-- RODAPÉ -->
+  <!-- =========================
+       FOOTER
+       ========================= -->
   <footer>
-    EEMTI Dragão do Mar 2026 · <span>powered by LEI</span>
+    EEMTI Dragão do Mar 2026 · <span>powered by LEI</span>  <!-- ANO E CRÉDITOS - fácil update -->
   </footer>
 
 </body>
